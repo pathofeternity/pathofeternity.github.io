@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://kit.fontawesome.com/daf6aae208.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="path.css">
+  <title>Hello, world!</title>
+</head>
+
+<body>
+  <div id="PathApp" class="App-container">
+    <!--<Popup />-->
+    <div class="App-column">
+      <div class="App-stats">
+        <div class="App-bars">
+          <div class="bars-component">
+            <div class="bars-container">
+              <h2> {{ levelName(player.level) }}</h2>
+              <div class="progress statProgress">
+                <div class="progress-bar" v-bind:style="{ width: barWidth(player.cultivation) }">
+                  <span>
+                    {{ format(player.cultivation.current) }} / {{ format(player.cultivation.max) }}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <smallbar :bartype=player.body></smallbar>
+            <smallbar :bartype=player.mind></smallbar>
+            <smallbar :bartype=player.soul></smallbar>
+
+          </div>
+        </div>
+        <div class="App-timer">
+          <div>
+            <button onClick={onClick}>TICK (for manual debugging)</button>
+            <button onClick={save}>Save</button>
+            <button onClick={deleteSave}>Delete Save</button>
+            <button onClick={showPopup}>Open Popup</button>
+            <!-- <TimerArea/> -->
+          </div>
+        </div>
+      </div>
+      <div class="App-menu">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab">
+            <a class="nav-item nav-link active" id="nav-training-tab" data-toggle="tab"
+              href="#nav-training">Training</a>
+            <a class="nav-item nav-link" id="nav-sects-tab" data-toggle="tab" href="#nav-sects">Sects</a>
+            <a class="nav-item nav-link" id="nav-elements-tab" data-toggle="tab" href="#nav-elements">Elements</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-training">
+            <div class="tab-container">
+              <div class="training-container">
+                <div class="card">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-cultivation-content"
+                    id="training-cultivation">
+                    <h5 class="panel-title">
+                      <a id="training-cultivation-title">Cultivation (50%)</a>
+                    </h5>
+                  </div>
+                  <div id="training-cultivation-content" class="collapse show" data-parent="#training-cultivation">
+                    <div class="card-body">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>Meditation</td>
+                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
+                            <td>50%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-basic-content"
+                    id="training-basic">
+                    <h5 class="panel-title">
+                      <a id="training-basic-title">Basic (50%)</a>
+                    </h5>
+                  </div>
+                  <div id="training-basic-content" class="collapse show" data-parent="#training-basic">
+                    <div class="card-body">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>Body</td>
+                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
+                            <td>50%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-skills-content"
+                    id="training-skills">
+                    <h5 class="panel-title">
+                      <a id="training-skills-title">Skills (0%)</a>
+                    </h5>
+                  </div>
+                  <div id="training-skills-content" class="collapse show" data-parent="#training-skills">
+                    <div class="card-body">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <td>Train Skill 1</td>
+                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
+                            <td>50%</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-sects">
+          <div class="tab-container">
+          </div>
+        </div>
+        <div class="tab-pane fade" id="nav-elements">
+          <div class="tab-container">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="App-column">
+      <div class="App-skills">
+        <nav>
+          <div class="nav nav-tabs" id="nav-tab">
+            <a class="nav-item nav-link active" id="nav-battle-tab" data-toggle="tab" href="#nav-battle">Battle</a>
+            <a class="nav-item nav-link" id="nav-alchemy-tab" data-toggle="tab" href="#nav-alchemy">Alchemy</a>
+            <a class="nav-item nav-link" id="nav-meditation-tab" data-toggle="tab" href="#nav-meditation">Meditation</a>
+            <a class="nav-item nav-link" id="nav-passives-tab" data-toggle="tab" href="#nav-passives">Passives</a>
+          </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+          <div class="tab-pane fade show active" id="nav-battle">
+            <div class="skill-tab-container">
+              <div class="training-container">
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-alchemy">
+            <div class="skill-tab-container">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-meditation">
+            <div class="skill-tab-container">
+            </div>
+          </div>
+          <div class="tab-pane fade" id="nav-passives">
+            <div class="skill-tab-container">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="App-map">
+        <div>
+          <div class="event-panel">
+            <div class="event-top">
+              <h2>{eventTitle}</h2>
+
+            </div>
+            {steps[stepIndex].isFight ? this.combatStep() : this.nonCombatStep()}
+          </div>
+          <!-- <EventListing /> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+  <script src="js/vue.js"></script>
+  <script src="js/break_infinity.js"></script>
+  <script src="js/calculate.js"></script>
+  <script src="js/constant.js"></script>
+  <script src="js/player.js"></script>
+  <script src="js/format.js"></script>
+  <script src="js/index.js"></script>
+  <script src="js/components/smallbar.js"></script>
+  <script>
+    app.mount('#PathApp');
+  </script>
+</body>
+
+</html>

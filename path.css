@@ -1,0 +1,254 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.App-container {
+  width: 100%;
+  /* Workaround because 100% height doesn't work. */
+  height: 100vh;
+}
+.App-column {
+  float: left;
+  min-width: 600px;
+  width: 50%;
+  height: 100%;
+}
+.App-stats {
+  margin: 10px;
+  /*
+  Override the horizontal margin because only vertical margins collapse.
+  This makes the space between the left and right halves 10px instead of 20px.
+  */
+  margin-right: 5px;
+  height: 225px;
+}
+.App-menu {
+  margin: 10px;
+  margin-right: 5px;
+  height: calc(100% - 255px);
+  min-height: 450px;
+}
+.App-skills {
+  margin: 10px;
+  margin-left: 5px;
+  /*
+  Because vertical margins are collapsed, add half the space back to each
+  component.
+  */
+  height: calc(50% - 15px);
+  min-height: 300px;
+}
+.App-map {
+  margin: 10px;
+  margin-left: 5px;
+  height: calc(50% - 15px);
+  min-height: 300px;
+
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.App-bars {
+  width: 80%;
+  height:100%;
+  float:left;
+}
+.App-timer {
+  width:20%;
+  height:100%;
+  float: right;
+}
+.fade:not(.in){
+  height:0%;
+}
+
+
+h2{ margin: 12px !important;}
+h3 {
+  margin: 12px !important;
+}
+.bars-component {
+  text-align: center;
+}
+.bars-container {
+  border: solid;
+  border-color: #cccccc;
+  margin: 5px;
+  padding: 5px;
+}
+.bars-container.small {
+  width: calc(33% - 8px);
+  float:left;
+}
+.progress.statProgress {
+  margin-bottom:0px !important;
+  height:34px !important;
+  position: relative;
+}
+.progress-bar {
+  overflow-x: visible;
+  background-color: #337ab7;
+}
+.progress span {
+  position: absolute;
+  display: block;
+  width: 100%;
+  color: black;
+  font-size: 14px;
+  margin-top: 0px;
+}
+.progress span.nomargin {
+  position: absolute;
+  display: block;
+  width: 100%;
+  color: black;
+  font-size: 16px;
+  margin-top: 0px;
+}
+
+.sect-listing-entry {
+  border-style: solid;
+  border-color: #cccccc;
+  overflow: hidden;
+  padding: 3px;
+}
+.sect-listing-section {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+.sect-listing-foundation-tech {
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: #cccccc;
+  height: 80px;
+}
+.sect-listing-foundation-skill {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.skill-tab-container{
+  /* Still have to do this height workaround */
+  height: calc(50vh - 55px) !important;
+  border-style: solid;
+  border-color: #cccccc;
+}
+.skill-listing {
+  float: left;
+  padding: 3px;
+  width: 60%;
+}
+.skill-selection {
+  float: left;
+  padding: 3px;
+  width: 40%;
+  height:100%;
+}
+img.skill-icon {
+  margin: 5px;
+  width: 32px;
+  height: 32px;
+}
+img.empty-slot {
+  margin: 5px;
+  width: 32px;
+  height: 32px;
+  display: inline-block;
+  box-sizing: border-box;
+  border: solid #cccccc;
+}
+.progress.smallProgress {
+  height: 5px !important;
+}
+.name-div {
+  display: inline-block;
+}
+.tab-container{
+  /* Still have to do this height workaround */
+  height: calc(100vh - 300px) !important;
+  border-color: #cccccc;
+  border-style: solid;
+  padding: 3px;
+}
+.items-column-container {
+  float: left;
+  width: calc(50% - 6px);
+  margin-left: 6px;
+  height: 100%;
+}
+.small-slider {
+    width: 50%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: inline-block;
+}
+.thin {
+  height:10%;
+}
+.thick {
+  overflow-y: auto;
+  height: calc(80% - 12px);
+  box-sizing: border-box;
+}
+
+.training-container {
+  float: left;
+  width: calc(50% - 6px);
+  margin-right: 6px;
+  height: 100%;
+}
+.card-header a:after {
+    font-family:'Font Awesome 5 Free';
+    content:"\f107";
+    font-weight: 900;
+    float: right;
+    color: grey;
+}
+.card-header.collapsed a:after {
+    font-weight: 900;
+    content:"\f105";
+}
+td {
+  padding: 2px !important;
+}
+.panel-group {
+  margin-bottom: 10px !important;
+}
+button {
+  margin-left: 10px !important;
+  margin-right: 10px !important;
+}
+div.event-top {
+  text-align: center;
+  border-bottom: solid #cccccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+div.event-panel {
+  height: 100%;
+  width: 100%;
+}
+div.btn-toolbar.event-buttonbar {
+  text-align: center !important;
+  white-space:nowrap;
+  overflow-x: auto;
+}
+.btn.toolbar-button {
+  float: none !important;
+}
+
+div.event-usable-skills{
+  width: 30%;
+  float:left;
+}
+
+div.event-progress-display{
+  padding: 20px;
+  width: 70%;
+  float:left;
+  text-align: center;
+}
