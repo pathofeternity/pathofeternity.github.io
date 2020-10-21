@@ -13,7 +13,7 @@
     integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/daf6aae208.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="path.css">
-  <title>Hello, world!</title>
+  <title>Path of Eternity</title>
 </head>
 
 <body>
@@ -23,20 +23,10 @@
       <div class="App-stats">
         <div class="App-bars">
           <div class="bars-component">
-            <div class="bars-container">
-              <h2> {{ levelName(player.level) }}</h2>
-              <div class="progress statProgress">
-                <div class="progress-bar" v-bind:style="{ width: barWidth(player.cultivation) }">
-                  <span>
-                    {{ format(player.cultivation.current) }} / {{ format(player.cultivation.max) }}
-                  </span>
-                </div>
-              </div>
-            </div>
+            <mainbar :bartype=player.cultivation :level=player.level></mainbar>
             <smallbar :bartype=player.body></smallbar>
             <smallbar :bartype=player.mind></smallbar>
             <smallbar :bartype=player.soul></smallbar>
-
           </div>
         </div>
         <div class="App-timer">
@@ -52,8 +42,7 @@
       <div class="App-menu">
         <nav>
           <div class="nav nav-tabs" id="nav-tab">
-            <a class="nav-item nav-link active" id="nav-training-tab" data-toggle="tab"
-              href="#nav-training">Training</a>
+            <a class="nav-item nav-link active" id="nav-training-tab" data-toggle="tab" href="#nav-training">Training</a>
             <a class="nav-item nav-link" id="nav-sects-tab" data-toggle="tab" href="#nav-sects">Sects</a>
             <a class="nav-item nav-link" id="nav-elements-tab" data-toggle="tab" href="#nav-elements">Elements</a>
           </div>
@@ -63,8 +52,7 @@
             <div class="tab-container">
               <div class="training-container">
                 <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-cultivation-content"
-                    id="training-cultivation">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-cultivation-content" id="training-cultivation">
                     <h5 class="panel-title">
                       <a id="training-cultivation-title">Cultivation (50%)</a>
                     </h5>
@@ -84,8 +72,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-basic-content"
-                    id="training-basic">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-basic-content" id="training-basic">
                     <h5 class="panel-title">
                       <a id="training-basic-title">Basic (50%)</a>
                     </h5>
@@ -105,8 +92,7 @@
                   </div>
                 </div>
                 <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-skills-content"
-                    id="training-skills">
+                  <div class="card-header" data-toggle="collapse" data-target="#training-skills-content" id="training-skills">
                     <h5 class="panel-title">
                       <a id="training-skills-title">Skills (0%)</a>
                     </h5>
@@ -128,14 +114,14 @@
               </div>
             </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="nav-sects">
-          <div class="tab-container">
+          <div class="tab-pane fade" id="nav-sects">
+            <div class="tab-container">
+            </div>
           </div>
-        </div>
-        <div class="tab-pane fade" id="nav-elements">
-          <div class="tab-container">
-          </div>
+          <div class="tab-pane fade" id="nav-elements">
+            <div class="tab-container">
+            </div>
+          </div>  
         </div>
       </div>
     </div>
@@ -200,6 +186,7 @@
   <script src="js/format.js"></script>
   <script src="js/index.js"></script>
   <script src="js/components/smallbar.js"></script>
+  <script src="js/components/mainbar.js"></script>
   <script>
     app.mount('#PathApp');
   </script>

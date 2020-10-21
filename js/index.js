@@ -48,9 +48,6 @@ const PathApp =  {
         format(number) {
             return format(number);
         },
-        levelName(number) {
-            return levelName(number);
-        },
         barWidth(number) {
             return (number.current.div(number.max).mul(100) + "%");
         },
