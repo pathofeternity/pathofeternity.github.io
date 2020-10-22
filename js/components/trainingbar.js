@@ -20,7 +20,7 @@ app.component('trainingbar', {
             percent += +player.mind.percent;
             percent += +player.soul.percent;
             if (percent > 100) {
-                this.localValue = oldValue;
+                this.localValue = newValue-(percent-100);
             }
             player.cultivation.percent = 100-percent;
         }
