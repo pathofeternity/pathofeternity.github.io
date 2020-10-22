@@ -1,4 +1,4 @@
-const player = {
+const player = Vue.reactive({
     lastUpdate: Date.now(),
     level: 0,
 
@@ -31,4 +31,4 @@ const player = {
     },
 
     skills: {},
-};
+});

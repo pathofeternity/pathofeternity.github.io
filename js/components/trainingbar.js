@@ -14,11 +14,11 @@ app.component('trainingbar', {
         }
     },
     watch: {
-        localValue2: function(newValue, oldValue) {
+        localValue: function(newValue, oldValue) {
             var percent = 0;
-            percent += player.body.percent;
-            percent += player.mind.percent;
-            percent += player.soul.percent;
+            percent += +player.body.percent;
+            percent += +player.mind.percent;
+            percent += +player.soul.percent;
             if (percent > 100) {
                 this.localValue = oldValue;
             }

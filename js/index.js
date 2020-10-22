@@ -16,31 +16,26 @@ const clearInt = new Proxy(clearInterval, {
 });
 
 
-function tick(that) {
+function tick() {
     let now = Date.now();
-    let dt = Math.max(0, Math.min(36000, (now - that.player.lastUpdate) / 1000));
+    let dt = Math.max(0, Math.min(36000, (now - player.lastUpdate) / 1000));
 
     let timeMult = 1;
-    that.player.lastUpdate = now;
+    player.lastUpdate = now;
     if (dt > 5) {
         while (dt > 5) {
-            resourceGain(that, 5 * timeMult);
+            resourceGain(5 * timeMult);
             dt -= 5
         }
-        resourceGain(that, dt * timeMult);
-        that.player.offlinetick = Date.now()
+        resourceGain(dt * timeMult);
+        player.offlinetick = Date.now()
     } else if (dt <= 5) {
-        resourceGain(that, dt * timeMult);
+        resourceGain(dt * timeMult);
     }
 
 }
 
 const PathApp =  {
-    data () {
-        return {
-            player: player
-        }
-    },
     mounted () {
         interval(this.tick, 50);
     },
@@ -52,9 +47,10 @@ const PathApp =  {
             return (number.current.div(number.max).mul(100) + "%");
         },
         tick() {
-            tick(this);
+            tick();
         }
     }
 }
 
 const app = Vue.createApp(PathApp);
+app.config.globalProperties.player = player;
