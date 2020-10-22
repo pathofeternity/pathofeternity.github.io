@@ -19,6 +19,9 @@ app.component('trainingbar', {
             percent += +player.body.percent;
             percent += +player.mind.percent;
             percent += +player.soul.percent;
+            for(var skill of player.skills) {
+                percent += +skill.percent;
+            }
             if (percent > 100) {
                 this.localValue = newValue-(percent-100);
             }
@@ -27,7 +30,7 @@ app.component('trainingbar', {
     },
     template: `
         <div class="row">
-            <div class="col-3">{{name}}</div>
+            <div class="col-5">{{name}}</div>
             <div class="col"><input type="range" min="0" max="100" v-model='localValue'/></div>
             <div class="col justify-content-end">{{localValue}}%</div>
         </div>

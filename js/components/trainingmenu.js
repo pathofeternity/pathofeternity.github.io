@@ -7,7 +7,11 @@ app.component('trainingmenu', {
             return (+player.body.percent) + (+player.mind.percent) + (+player.soul.percent);
         },
         skillLabel: function() {
-            return "";
+            var percent = 0;
+            for(var skill of player.skills) {
+                percent += +skill.percent;
+            }
+            return percent;
         }
     },
     template: `
@@ -26,8 +30,8 @@ app.component('trainingmenu', {
             </div>
             <div v-if='player.skills.length > 0'>
                 <a>Skill ({{skillLabel}}%)</a>
-                <hr>
-                Meditation
+                <hr style='margin-top:0em' >
+                <trainingbar v-for="skill in player.skills" v-bind:name='skill.name' v-model:value=skill.percent></trainingbar>
             </div>
         </div>
     `

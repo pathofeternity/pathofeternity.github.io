@@ -30,5 +30,6 @@ const player = Vue.reactive({
         percent: 0,
     },
 
-    skills: {},
+    skills: [],
 });
+

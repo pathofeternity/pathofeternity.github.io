@@ -18,3 +18,5 @@ var skillslist = {
     'cultivation-proficiency': new skill("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "passive"),
     'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack"),
 }
+player.skills.push(skillslist['cultivation-proficiency']);
+player.skills.push(skillslist['burn-things']);
