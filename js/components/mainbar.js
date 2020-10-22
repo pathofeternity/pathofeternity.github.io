@@ -3,29 +3,27 @@ app.component('mainbar', {
         'bartype',
         'level'
     ],
-    data: function() {
-        return {}
-    },
-    methods: {
-        format(amount) {
-          return format(amount)
+    computed: {
+        label: function() {
+            return format(this.bartype.current,2) + "/" + format(this.bartype.max,2) + (this.bartype.increase.neq(0) ? " (" + format(this.bartype.increase,2) + "/s)" : "");
         },
-        barWidth(number) {
-            return (number.current.div(number.max).mul(100) + "%");
+        barWidth: function() {
+            return (this.bartype.current.div(this.bartype.max).mul(100) + "%");
         },
-        levelName(number) {
-            return levelName(number);
+        levelName: function() {
+            return levelName(this.level);
         },
     },
-    template:
-        `<div class="bars-container">
-            <h2> {{ levelName(level) }}</h2>
+    template: `
+        <div class="bars-container">
+            <h2> {{ levelName }}</h2>
             <div class="progress statProgress">
-                <div class="progress-bar" v-bind:style="{ width: barWidth(bartype) }">
+                <div class="progress-bar" v-bind:style="{ width: barWidth }">
                     <span>
-                        {{ format(bartype.current) }} / {{ format(bartype.max) }}
+                        {{ label }}
                     </span>
                 </div>
             </div>
-        </div>`
+        </div>
+        `
 })

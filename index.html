@@ -24,9 +24,9 @@
         <div class="App-bars">
           <div class="bars-component">
             <mainbar :bartype=player.cultivation :level=player.level></mainbar>
-            <smallbar :bartype=player.body></smallbar>
-            <smallbar :bartype=player.mind></smallbar>
-            <smallbar :bartype=player.soul></smallbar>
+            <smallbar :bartype=player.body v-if='player.level > 1'></smallbar>
+            <smallbar :bartype=player.mind v-if='player.level > 5'></smallbar>
+            <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
           </div>
         </div>
         <div class="App-timer">
@@ -42,76 +42,16 @@
       <div class="App-menu">
         <nav>
           <div class="nav nav-tabs" id="nav-tab">
-            <a class="nav-item nav-link active" id="nav-training-tab" data-toggle="tab" href="#nav-training">Training</a>
-            <a class="nav-item nav-link" id="nav-sects-tab" data-toggle="tab" href="#nav-sects">Sects</a>
-            <a class="nav-item nav-link" id="nav-elements-tab" data-toggle="tab" href="#nav-elements">Elements</a>
+            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
+            <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
+            <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
           </div>
         </nav>
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-training">
-            <div class="tab-container">
-              <div class="training-container">
-                <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-cultivation-content" id="training-cultivation">
-                    <h5 class="panel-title">
-                      <a id="training-cultivation-title">Cultivation (50%)</a>
-                    </h5>
-                  </div>
-                  <div id="training-cultivation-content" class="collapse show" data-parent="#training-cultivation">
-                    <div class="card-body">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>Meditation</td>
-                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
-                            <td>50%</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-basic-content" id="training-basic">
-                    <h5 class="panel-title">
-                      <a id="training-basic-title">Basic (50%)</a>
-                    </h5>
-                  </div>
-                  <div id="training-basic-content" class="collapse show" data-parent="#training-basic">
-                    <div class="card-body">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>Body</td>
-                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
-                            <td>50%</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-                <div class="card">
-                  <div class="card-header" data-toggle="collapse" data-target="#training-skills-content" id="training-skills">
-                    <h5 class="panel-title">
-                      <a id="training-skills-title">Skills (0%)</a>
-                    </h5>
-                  </div>
-                  <div id="training-skills-content" class="collapse show" data-parent="#training-skills">
-                    <div class="card-body">
-                      <table>
-                        <tbody>
-                          <tr>
-                            <td>Train Skill 1</td>
-                            <td><input type="range" min="0" max="100" value=50 disabled=true /></td>
-                            <td>50%</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <div class="tab-container row">
+              <trainingmenu></trainingmenu>>
+              <div class="col">&nbsp;</div>
             </div>
           </div>
           <div class="tab-pane fade" id="nav-sects">
@@ -121,7 +61,7 @@
           <div class="tab-pane fade" id="nav-elements">
             <div class="tab-container">
             </div>
-          </div>  
+          </div>
         </div>
       </div>
     </div>
@@ -130,7 +70,8 @@
         <nav>
           <div class="nav nav-tabs" id="nav-tab">
             <a class="nav-item nav-link active" id="nav-battle-tab" data-toggle="tab" href="#nav-battle">Battle</a>
-            <a class="nav-item nav-link" id="nav-alchemy-tab" data-toggle="tab" href="#nav-alchemy">Alchemy</a>
+            <a class="nav-item nav-link" id="nav-alchemy-tab" data-toggle="tab" href="#nav-alchemy"
+              v-if='player.level > 15'>Alchemy</a>
             <a class="nav-item nav-link" id="nav-meditation-tab" data-toggle="tab" href="#nav-meditation">Meditation</a>
             <a class="nav-item nav-link" id="nav-passives-tab" data-toggle="tab" href="#nav-passives">Passives</a>
           </div>
@@ -183,10 +124,13 @@
   <script src="js/calculate.js"></script>
   <script src="js/constant.js"></script>
   <script src="js/player.js"></script>
+  <script src="js/skills.js"></script>
   <script src="js/format.js"></script>
   <script src="js/index.js"></script>
   <script src="js/components/smallbar.js"></script>
   <script src="js/components/mainbar.js"></script>
+  <script src="js/components/trainingbar.js"></script>
+  <script src="js/components/trainingmenu.js"></script>
   <script>
     app.mount('#PathApp');
   </script>

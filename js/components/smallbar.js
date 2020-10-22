@@ -2,26 +2,27 @@ app.component('smallbar', {
     props: [
         'bartype'
     ],
-    data: function() {
-        return {}
-    },
-    methods: {
-        format(amount) {
-          return format(amount)
+    computed: {
+        label: function() {
+            return format(this.bartype.current) + "/" + format(this.bartype.max) + (this.bartype.increase.neq(0) ? " (" + format(this.bartype.increase) + "/s)" : "");
         },
-        barWidth(number) {
-            return (number.current.div(number.max).mul(100) + "%");
-        }
+        barWidth: function() {
+            return (this.bartype.current.div(this.bartype.max).mul(100) + "%");
+        },
+        levelName: function() {
+            return levelName(this.level);
+        },
     },
-    template:
-        `<div class="small bars-container">
+    template: `
+        <div class="small bars-container">
             <h3>{{bartype.name}}</h3>
             <div class="progress statProgress">
-                <div class="progress-bar" v-bind:style="{ width: barWidth(bartype) }">
+                <div class="progress-bar" v-bind:style="{ width: barWidth }">
                     <span>
-                        {{ format(bartype.current) }} / {{ format(bartype.max) }} 
+                        {{ label }} 
                     </span>
                 </div>
             </div>
-        </div>`
+        </div>
+        `
 })
