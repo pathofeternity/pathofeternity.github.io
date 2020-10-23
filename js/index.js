@@ -35,6 +35,16 @@ function tick() {
 
 }
 
+function startEvent(newEvent) {
+    player.inEvent = true;
+    player.currentEvent = newEvent;
+}
+
+function endEvent() {
+    player.inEvent = false;
+    player.currentEvent = {};
+}
+
 const PathApp =  {
     mounted () {
         interval(this.tick, 50);

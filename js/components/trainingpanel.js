@@ -1,4 +1,4 @@
-app.component('trainingmenu', {
+app.component('trainingpanel', {
     computed: {
         cultivationLabel: function() {
             return (+player.cultivation.percent);

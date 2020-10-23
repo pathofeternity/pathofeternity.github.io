@@ -50,7 +50,7 @@
         <div class="tab-content" id="nav-tabContent">
           <div class="tab-pane fade show active" id="nav-training">
             <div class="tab-container row">
-              <trainingmenu></trainingmenu>>
+              <trainingpanel></trainingpanel>>
               <div class="col-4">&nbsp;</div>
             </div>
           </div>
@@ -99,12 +99,8 @@
       </div>
       <div class="App-map">
         <div>
-          <div class="event-panel">
-            <div class="event-top">
-              <h2>{eventTitle}</h2>
-
-            </div>
-            {steps[stepIndex].isFight ? this.combatStep() : this.nonCombatStep()}
+          <div class="encounter-panel">
+            <eventpanel></eventpanel>
           </div>
           <!-- <EventListing /> -->
         </div>
@@ -125,12 +121,14 @@
   <script src="js/constant.js"></script>
   <script src="js/player.js"></script>
   <script src="js/skills.js"></script>
+  <script src="js/events.js"></script>
   <script src="js/format.js"></script>
   <script src="js/index.js"></script>
   <script src="js/components/smallbar.js"></script>
   <script src="js/components/mainbar.js"></script>
   <script src="js/components/trainingbar.js"></script>
-  <script src="js/components/trainingmenu.js"></script>
+  <script src="js/components/trainingpanel.js"></script>
+  <script src="js/components/eventpanel.js"></script>
   <script>
     app.mount('#PathApp');
   </script>

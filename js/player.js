@@ -31,5 +31,7 @@ const player = Vue.reactive({
     },
 
     skills: [],
+    inEvent: false,
+    currentEvent: {},
 });
 

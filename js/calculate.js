@@ -8,3 +8,14 @@ function resourceGain(ticks) {
     //updateHTML();
 
 }
+
+function calculateCultivationMax(level) {
+    return new Decimal("10").pow(level+1);
+}
+
+function breakthrough(maxLevel) {
+    if (player.level < maxLevel) {
+        player.level++;
+        player.cultivation.max = calculateCultivationMax(player.level);
+    }
+}
