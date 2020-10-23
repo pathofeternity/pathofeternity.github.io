@@ -3,6 +3,7 @@ function resourceGain(ticks) {
     player.cultivation.current = player.cultivation.current.add(player.cultivation.increase.mul(ticks));
     if (player.cultivation.current.gte(player.cultivation.max)) {
         player.cultivation.current = player.cultivation.max;
+        player.cultivation.increase = new Decimal(0);
     }
     //updateHTML();
 

@@ -30,7 +30,7 @@ app.component('trainingbar', {
     },
     template: `
         <div class="row">
-            <div class="col-5">{{name}}</div>
+            <div class="col-5 offset-1">{{name}}</div>
             <div class="col"><input type="range" min="0" max="100" v-model='localValue'/></div>
             <div class="col justify-content-end">{{localValue}}%</div>
         </div>
