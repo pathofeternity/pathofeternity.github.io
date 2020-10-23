@@ -32,6 +32,5 @@ const player = Vue.reactive({
 
     skills: [],
     inEvent: false,
-    currentEvent: {},
+    currentEvent: new breakthroughE1()
 });
-

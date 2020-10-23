@@ -1,18 +1,17 @@
 app.component('eventpanel', {
     data() { return {
-      eventtext: "Sample event text goes here",
-      buttontexts: ["Button 1", "Button 2"],
-      choice: "None"
+      stepIndex: 0 // I know this this is redundant with currentStep
+      // but I don't know where we'll set it.
     }},
     props: [
-        'bartype',
-        'level'
     ],
     computed: {
+      event: function() { return player.currentEvent },
+      step: function() { return this.event.steps[this.stepIndex]},
     },
-    template: `<div>{{eventtext}}</div>
-    <div>{{choice}}</div>
-    <span v-for="text in buttontexts">
-      <button v-on:click="choice=text">{{text}}</button>
-    </span>`
+    template: `
+    <div>{{step.title}}</div>
+    <div>{{step.description}}</div>
+    <button v-on:click="step.finishAction">{{step.defaultAction}}</button>
+    `
 })
