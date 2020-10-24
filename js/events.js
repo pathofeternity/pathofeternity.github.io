@@ -1,8 +1,8 @@
 class baseevent {
-    constructor (name, steps) {
+    constructor (name, steps, start) {
         this.name = name;
         this.steps = steps;
-        this.currentStep = {};
+        this.currentStep = start;
     };
 
     visible() {
@@ -17,12 +17,13 @@ class breakthroughE1 extends baseevent {
                 title: "Gather Specks",
                 description: "Gathering Specks...",
                 defaultAction: "Gather",
+                hasDefaultAction: true,
                 finishAction: function () {
                     breakthrough(5);
                 }
             }
         ]
-        super("A Mysterious Phenomenon", steps);
+        super("A Mysterious Phenomenon", steps, 0);
     }
 
 }

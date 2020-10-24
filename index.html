@@ -98,12 +98,10 @@
         </div>
       </div>
       <div class="App-map">
-        <div>
-          <div class="encounter-panel">
-            <eventpanel></eventpanel>
-          </div>
-          <!-- <EventListing /> -->
+        <div v-if='player.inEvent==true' class="encounter-panel">
+          <eventpanel></eventpanel>
         </div>
+        <!-- <EventListing /> -->
       </div>
     </div>
   </div>

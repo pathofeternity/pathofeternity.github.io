@@ -35,9 +35,14 @@ function tick() {
 
 }
 
+function startBreakthrough(level) {
+    if (level == 0)
+        startEvent(new breakthroughE1())
+}
+
 function startEvent(newEvent) {
-    player.inEvent = true;
     player.currentEvent = newEvent;
+    player.inEvent = true;
 }
 
 function endEvent() {
