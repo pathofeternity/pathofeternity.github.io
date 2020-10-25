@@ -9,9 +9,6 @@ app.component('smallbar', {
         barWidth: function() {
             return (this.bartype.current.div(this.bartype.max).mul(100) + "%");
         },
-        levelName: function() {
-            return levelName(this.level);
-        },
     },
     template: `
         <div class="small bars-container">

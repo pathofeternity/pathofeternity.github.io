@@ -24,7 +24,7 @@ app.component('mainbar', {
     },
     template: `
         <div class="bars-container">
-            <h2> {{ levelName }}</h2>
+            <h2> Cultivation - {{ levelName }}</h2>
             <div class="progress statProgress">
                 <div class="progress-bar" v-bind:style="{ width: barWidth }">
                     <span>

@@ -7,6 +7,7 @@ class skill {
         this.experience = new Decimal("0");
         this.tnl = new Decimal("10");
         this.percent = 0;
+        this.damage = new Decimal("1");
     };
 
     addExp(number) {
