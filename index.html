@@ -41,13 +41,13 @@
       </div>
       <div class="App-menu">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab">
+          <div class="nav nav-tabs">
             <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
             <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
             <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
           </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content">
           <div class="tab-pane fade show active" id="nav-training">
             <div class="tab-container row">
               <trainingpanel></trainingpanel>>
@@ -68,32 +68,22 @@
     <div class="App-column">
       <div class="App-skills">
         <nav>
-          <div class="nav nav-tabs" id="nav-tab">
-            <a class="nav-item nav-link active" id="nav-battle-tab" data-toggle="tab" href="#nav-battle">Battle</a>
-            <a class="nav-item nav-link" id="nav-alchemy-tab" data-toggle="tab" href="#nav-alchemy"
-              v-if='player.level > 15'>Alchemy</a>
-            <a class="nav-item nav-link" id="nav-meditation-tab" data-toggle="tab" href="#nav-meditation">Meditation</a>
-            <a class="nav-item nav-link" id="nav-passives-tab" data-toggle="tab" href="#nav-passives">Passives</a>
+          <div class="nav nav-tabs">
+            <a class="nav-item nav-link" data-toggle="tab" href="#nav-battle" v-if='player.level > 2'>Battle</a>
+            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-techniques">Techniques</a>
+            <a class="nav-item nav-link" data-toggle="tab" href="#nav-alchemy" v-if='player.level > 15'>Alchemy</a>
+            <a class="nav-item nav-link" data-toggle="tab" href="#nav-passives" v-if='player.level > 5'>Passives</a>
           </div>
         </nav>
-        <div class="tab-content" id="nav-tabContent">
-          <div class="tab-pane fade show active" id="nav-battle">
-            <div class="skill-tab-container">
-              <div class="training-container">
-              </div>
-            </div>
+        <div class="tab-content">
+          <div class="tab-pane skill-tab-container fade" id="nav-battle">
           </div>
-          <div class="tab-pane fade" id="nav-alchemy">
-            <div class="skill-tab-container">
-            </div>
+          <div class="tab-pane skill-tab-container fade show active" id="nav-techniques">
+            <techniquespanel></techniquespanel>
           </div>
-          <div class="tab-pane fade" id="nav-meditation">
-            <div class="skill-tab-container">
-            </div>
+          <div class="tab-pane skill-tab-container fade" id="nav-alchemy">
           </div>
-          <div class="tab-pane fade" id="nav-passives">
-            <div class="skill-tab-container">
-            </div>
+          <div class="tab-pane skill-tab-container fade" id="nav-passives">
           </div>
         </div>
       </div>
@@ -127,6 +117,8 @@
   <script src="js/components/trainingbar.js"></script>
   <script src="js/components/trainingpanel.js"></script>
   <script src="js/components/eventpanel.js"></script>
+  <script src="js/components/techniquespanel.js"></script>
+  <script src="js/components/skillbar.js"></script>
   <script>
     app.mount('#PathApp');
   </script>
