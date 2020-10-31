@@ -19,8 +19,8 @@ app.component('trainingbar', {
             percent += +player.body.percent;
             percent += +player.mind.percent;
             percent += +player.soul.percent;
-            for(var skill of player.skills) {
-                percent += +skill.percent;
+            for(var skill in player.skills) {
+                percent += +player.skills[skill].percent;
             }
             if (percent > 100) {
                 this.localValue = newValue-(percent-100);

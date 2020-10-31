@@ -30,8 +30,24 @@ const player = Vue.reactive({
         percent: 0,
     },
 
-    skills: [],
+    skills: {},
     inEvent: false,
     currentEvent: {},
+
+    getSkillCategory(cat) {
+        var result = {};
+        for (var skill in player.skills) {
+            if (player.skills[skill].type == cat) {
+                result[skill] = player.skills[skill];
+            }
+        }
+        return result;
+    },
+    
+    addSkill(name) {
+        if (!(name in player.skills))
+            player.skills[name] = skillslist[name];
+    }
+    
 });
 

@@ -1,1 +1,2 @@
 const tierNames = ["Essence", "Foundation", "Azoth", "Nascent Soul", "Demigod"];
+const skillLevelNames = ['Unskilled', 'Minor Completion', 'Half Completion', 'Grand Completion', 'Perfection', 'Legendary']

@@ -11,13 +11,13 @@ app.component('skillbar', {
         barWidth: function() {
             return (this.skill.experience.div(this.skill.tnl).mul(100) + "%");
         },
-        level: function() {
-            return this.skill.level.toString()
+        levelName: function() {
+            return skillLevelNames[this.skill.level]
         }
     },
     template: `
         <div class="col offset-1">
-            <div class="row">{{skill.name}} - Level {{level}}</div>
+            <div class="row">{{skill.name}} - {{levelName}}</div>
             <div class="row progress">
                 <div class="progress-bar" v-bind:style="{ width: barWidth }">
                     <span>

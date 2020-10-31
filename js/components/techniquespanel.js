@@ -5,7 +5,7 @@ app.component('techniquespanel', {
     },
     computed: {
         cultivationSkills: function() {
-            return player.skills.filter(skill => skill.type == 'cultivation')
+            return player.getSkillCategory('cultivation');
         }
     },
     template: `

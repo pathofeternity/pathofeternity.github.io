@@ -8,8 +8,8 @@ app.component('trainingpanel', {
         },
         skillLabel: function() {
             var percent = 0;
-            for(var skill of player.skills) {
-                percent += +skill.percent;
+            for(var skill in player.skills) {
+                percent += +player.skills[skill].percent;
             }
             return percent;
         }
@@ -28,7 +28,7 @@ app.component('trainingpanel', {
                 <trainingbar name='Mind' v-model:value=player.mind.percent></trainingbar>
                 <trainingbar name='Soul' v-model:value=player.soul.percent></trainingbar>
             </div>
-            <div v-if='player.skills.length > 0'>
+            <div v-if='Object.keys(player.skills).length > 0'>
                 <a>Skill ({{skillLabel}}%)</a>
                 <hr style='margin-top:0em' >
                 <trainingbar v-for="skill in player.skills" v-bind:name='skill.name' v-model:value=skill.percent></trainingbar>
