@@ -31,14 +31,20 @@ const player = Vue.reactive({
     },
 
     skills: {},
+    equipSlots: {
+        'cultivation': {
+            slots: 1,
+            skills: [],
+        },
+    },
     inEvent: false,
     currentEvent: {},
 
     getSkillCategory(cat) {
-        var result = {};
+        var result = [];
         for (var skill in player.skills) {
             if (player.skills[skill].type == cat) {
-                result[skill] = player.skills[skill];
+                result.push(skill);
             }
         }
         return result;
@@ -47,7 +53,24 @@ const player = Vue.reactive({
     addSkill(name) {
         if (!(name in player.skills))
             player.skills[name] = skillslist[name];
-    }
+    },
+
+    equipSkill(name) {
+        var type = player.skills[name].type;
+        if (player.equipSlots[type].slots > player.equipSlots[type].skills.length) {
+            if (!player.equipSlots[type].skills.includes(name)) {
+                player.equipSlots[type].skills.push(name);
+            }
+        }
+    },
+
+    unequipSkill(name) {
+        var type = player.skills[name].type;
+        var index = player.equipSlots[type].skills.indexOf(name)
+        if (index > -1) {
+            player.equipSlots[type].skills.splice(index,1);
+        }
+    },
     
 });
 

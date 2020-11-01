@@ -1,5 +1,5 @@
 class skill {
-    constructor (name, description, type) {
+    constructor (name, description, type, icon) {
         this.name = name;
         this.description = description;
         this.type = type;
@@ -8,6 +8,7 @@ class skill {
         this.tnl = new Decimal("10");
         this.percent = 0;
         this.damage = new Decimal("1");
+        this.icon = icon;
     };
 
     addExp(number) {
@@ -16,8 +17,8 @@ class skill {
 }
 
 var skillslist = {
-    'cultivation-proficiency': new skill("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "cultivation"),
-    'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack"),
+    'cultivation-proficiency': new skill("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "cultivation", "fa-dharmachakra"),
+    'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack", "fa-fire"),
 }
 
 player.addSkill('cultivation-proficiency');
