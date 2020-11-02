@@ -16,8 +16,18 @@ class skill {
     }
 }
 
+class cultivationProficiency extends skill {
+    constructor() {
+        super("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "cultivation", "fa-dharmachakra");
+    }
+
+    modifyCultivationBase(input) {
+        return new Decimal("5");
+    }
+}
+
 var skillslist = {
-    'cultivation-proficiency': new skill("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "cultivation", "fa-dharmachakra"),
+    'cultivation-proficiency': new cultivationProficiency(),
     'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack", "fa-fire"),
 }
 

@@ -74,3 +74,4 @@ const player = Vue.reactive({
     
 });
 
+const cultivationBase = new Decimal("1");

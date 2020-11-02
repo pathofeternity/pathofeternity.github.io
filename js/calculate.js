@@ -1,5 +1,28 @@
 function resourceGain(ticks) {
-    player.cultivation.increase = new Decimal(0.1).mul(player.cultivation.percent);
+    var equippedSkills = [];
+
+    equippedSkills = equippedSkills.concat(player.equipSlots['cultivation'].skills);
+
+    var cultivation = cultivationBase;
+    for (skill of equippedSkills) {
+        if ('modifyCultivationBase' in player.skills[skill]) {
+            cultivation = player.skills[skill].modifyCultivationBase(cultivation);
+        }
+    }
+
+    for (skill of equippedSkills) {
+        if ('modifyCultivation' in player.skills[skill]) {
+            cultivation = player.skills[skill].modifyCultivation(cultivation);
+        }
+    }
+
+    for (skill of equippedSkills) {
+        if ('modifyCultivationExp' in player.skills[skill]) {
+            cultivation = player.skills[skill].modifyCultivationExp(cultivation);
+        }
+    }
+
+    player.cultivation.increase = cultivation.mul(player.cultivation.percent/100);
     player.cultivation.current = player.cultivation.current.add(player.cultivation.increase.mul(ticks));
     if (player.cultivation.current.gte(player.cultivation.max)) {
         player.cultivation.current = player.cultivation.max;
