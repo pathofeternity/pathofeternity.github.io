@@ -4,32 +4,39 @@ class skill {
         this.description = description;
         this.type = type;
         this.level = new Decimal("0");
-        this.experience = new Decimal("0");
-        this.tnl = new Decimal("10");
         this.percent = 0;
         this.damage = new Decimal("1");
         this.icon = icon;
+        this.max = new Decimal("10");
+        this.current = new Decimal("0");
+        this.increase = new Decimal("1");
+        this.baseIncrease = new Decimal("1");
+        this.visible = true;
     };
 
     addExp(number) {
-        this.experience = this.experience.add(number);
+        this.current = this.current.add(number);
+        if (this.current.gt(this.max)) {
+            this.current = this.max;
+            this.increase = new Decimal("0");
+        }
     }
 }
 
-class cultivationProficiency extends skill {
+class recklessAbsorption extends skill {
     constructor() {
-        super("Cultivation Proficiency", "Increases cultivation proficiency.  Profound.", "cultivation", "fa-dharmachakra");
+        super("Reckless Absorption", "Increases cultivation proficiency by recklessly absorbing specks of light.  Profound.", "cultivation", "fa-spinner");
     }
 
     modifyCultivationBase(input) {
-        return new Decimal("5");
+        return new Decimal("1").add(new Decimal("4").mul(this.current.div(this.max)));
     }
 }
 
 var skillslist = {
-    'cultivation-proficiency': new cultivationProficiency(),
+    'reckless-absorption': new recklessAbsorption(),
     'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack", "fa-fire"),
 }
 
-player.addSkill('cultivation-proficiency');
+player.addSkill('reckless-absorption');
 player.addSkill('burn-things');

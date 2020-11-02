@@ -12,10 +12,10 @@ app.component('skillbar', {
             return player.skills[this.name];
         },
         label: function() {
-            return format(this.skill.experience) + "/" + format(this.skill.tnl);
+            return format(this.skill.current) + "/" + format(this.skill.max) + (this.skill.increase.neq(0) ? " (" + format(this.skill.increase,2) + "/s)" : "");
         },
         barWidth: function() {
-            return (this.skill.experience.div(this.skill.tnl).mul(100) + "%");
+            return (this.skill.current.div(this.skill.max).mul(100) + "%");
         },
         levelName: function() {
             return skillLevelNames[this.skill.level]

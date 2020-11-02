@@ -17,8 +17,8 @@ function resourceGain(ticks) {
     }
 
     for (skill of equippedSkills) {
-        if ('modifyCultivationExp' in player.skills[skill]) {
-            cultivation = player.skills[skill].modifyCultivationExp(cultivation);
+        if ('modifyCultivationExponential' in player.skills[skill]) {
+            cultivation = player.skills[skill].modifyCultivationExponential(cultivation);
         }
     }
 
@@ -27,6 +27,29 @@ function resourceGain(ticks) {
     if (player.cultivation.current.gte(player.cultivation.max)) {
         player.cultivation.current = player.cultivation.max;
         player.cultivation.increase = new Decimal(0);
+    }
+
+    for (skill in player.skills) {
+        var skillIncrease = player.skills[skill].baseIncrease;
+        for (skill of equippedSkills) {
+            if ('modifySkillExperienceBase' in player.skills[skill]) {
+                skillIncrease = player.skills[skill].modifySkillExperienceBase(skill, skillIncrease);
+            }
+        }
+    
+        for (skill of equippedSkills) {
+            if ('modifySkillExperience' in player.skills[skill]) {
+                skillIncrease = player.skills[skill].modifySkillExperience(skill, skillIncrease);
+            }
+        }
+    
+        for (skill of equippedSkills) {
+            if ('modifySkillExperienceExponential' in player.skills[skill]) {
+                skillIncrease = player.skills[skill].modifySkillExponentialExperience(skill, skillIncrease);
+            }
+        } 
+        player.skills[skill].increase = skillIncrease.mul(player.skills[skill].percent/100);
+        player.skills[skill].addExp(player.skills[skill].increase.mul(ticks));
     }
 
     if (player.inEvent) {

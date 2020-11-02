@@ -39,6 +39,5 @@ app.component('skillslots', {
                 <i class="fas fa-expand" style="font-size:1.5rem"></i>Drag skill here to equip
             </div>
         </div>
-        </div>
         `
 })

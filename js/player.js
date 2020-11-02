@@ -40,6 +40,16 @@ const player = Vue.reactive({
     inEvent: false,
     currentEvent: {},
 
+    getAllSkills() {
+        var result = [];
+        for (var skill in player.skills) {
+            if (player.skills[skill].visible) {
+                result.push(skill);
+            }
+        }
+        return result;
+    },
+
     getSkillCategory(cat) {
         var result = [];
         for (var skill in player.skills) {
@@ -74,4 +84,4 @@ const player = Vue.reactive({
     
 });
 
-const cultivationBase = new Decimal("1");
+const cultivationBase = new Decimal("10");

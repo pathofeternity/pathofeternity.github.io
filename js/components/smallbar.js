@@ -4,7 +4,7 @@ app.component('smallbar', {
     ],
     computed: {
         label: function() {
-            return format(this.bartype.current) + "/" + format(this.bartype.max) + (this.bartype.increase.neq(0) ? " (" + format(this.bartype.increase) + "/s)" : "");
+            return format(this.bartype.current) + "/" + format(this.bartype.max) + (this.bartype.increase.neq(0) ? " (" + format(this.bartype.increase,2) + "/s)" : "");
         },
         barWidth: function() {
             return (this.bartype.current.div(this.bartype.max).mul(100) + "%");

@@ -57,8 +57,8 @@ app.component('eventpanel', {
             </div>
             <div class="row">
                 <div class="col-4 btn-group-vertical event-usable-skills">
-                    <button type="button" v-if=currentStep.hasDefaultAction @click='useSkill("generic")' class="btn btn-primary">{{currentStep.defaultAction}}</button>
-                    <button type="button" v-for="skill in validActions" @click=useSkill(skill) class="btn btn-primary">{{skill.name}}</button>
+                    <button type="button" v-if=currentStep.hasDefaultAction @click='useSkill("generic")' class="btn btn-primary mb-2">{{currentStep.defaultAction}}</button>
+                    <button type="button" v-for="skill in validActions" @click=useSkill(skill) class="btn btn-primary mb-2">{{skill.name}}</button>
                     <button type="button" @click=exitEvent() class="btn btn-primary">Cancel</button>
                 </div>
                 <div class="col mr-3">
