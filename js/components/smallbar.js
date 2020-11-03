@@ -14,7 +14,7 @@ app.component('smallbar', {
         <div class="col-4">
             <div class="panel-border">
                 <h3>{{bartype.name}}</h3>
-                <div class="progress">
+                <div class="progress stat-progress">
                     <div class="progress-bar" v-bind:style="{ width: barWidth }">
                         <span>
                             {{ label }} 
