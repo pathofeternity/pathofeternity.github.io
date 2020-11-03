@@ -60,8 +60,8 @@ const player = Vue.reactive({
         return result;
     },
     
-    addSkill(name) {
-        if (!(name in player.skills))
+    initializeSkills() {
+        for (name in skillslist)
             player.skills[name] = skillslist[name];
     },
 
@@ -82,6 +82,11 @@ const player = Vue.reactive({
         }
     },
     
+    //Modal stuff
+    modalOpen: false,
+    modalActive: false,
+    modalTitle: "",
+    modalText: "",
 });
 
 const cultivationBase = new Decimal("10");

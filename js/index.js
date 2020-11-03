@@ -50,9 +50,34 @@ function endEvent() {
     player.currentEvent = {};
 }
 
+function showModal(title,text) {
+    player.modalTitle = title;
+    player.modalText = text;
+    const body = document.querySelector("body");
+    player.modalActive = true;
+    body.classList.add("modal-open")
+    setTimeout(() => (player.modalOpen = true), 10);
+}
+
+function hideModal() {
+    const body = document.querySelector("body");
+    player.modalActive = false;
+    body.classList.remove("modal-open");
+    setTimeout(() => (player.modalOpen = false), 10);
+}
+
+function initialize() {
+    player.initializeSkills();
+
+    if (!loadGame()) {
+        showModal("The Story Begins...", "After a long day working in the fields, you relax on a chair watching the sunset peacefully. Tonight though, the last few rays of sunlight seem to twinkle off of something hanging in the air. You grab at the speck of light and when it touches your hand, you feel a strand of warmth enter your body. This feeling is quite pleasant, so you start to gather every speck you can see nearby.");
+    }
+    interval(this.tick, 50);
+}
+
 const PathApp =  {
     mounted () {
-        interval(this.tick, 50);
+        initialize();
     },
     methods: {
         format(number) {

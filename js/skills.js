@@ -37,6 +37,3 @@ var skillslist = {
     'reckless-absorption': new recklessAbsorption(),
     'burn-things': new skill("Burn Things", "Unleash your inner pyro.  Sizzling.", "attack", "fa-fire"),
 }
-
-player.addSkill('reckless-absorption');
-player.addSkill('burn-things');
