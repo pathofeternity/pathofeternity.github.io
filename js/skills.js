@@ -29,7 +29,7 @@ class recklessAbsorption extends skill {
     }
 
     modifyCultivationBase(input) {
-        return new Decimal("1").add(new Decimal("4").mul(this.current.div(this.max)));
+        return cultivationBase.add(new Decimal("4").mul(this.current.div(this.max)));
     }
 }
 
