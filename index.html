@@ -17,81 +17,82 @@
 </head>
 
 <body>
-  <div id="PathApp" class="App-container">
+  <div id="app" class="container-fluid">
     <!--<Popup />-->
-    <div class="App-column">
-      <div class="App-stats">
-        <div class="App-bars">
-          <div class="bars-component">
-            <mainbar :bartype=player.cultivation :level=player.level></mainbar>
-            <smallbar :bartype=player.body v-if='player.level > 1'></smallbar>
-            <smallbar :bartype=player.mind v-if='player.level > 5'></smallbar>
-            <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
-          </div>
-        </div>
-        <div class="App-timer">
-          <div>
-            <button onClick={onClick}>TICK (for manual debugging)</button>
-            <button onClick={save}>Save</button>
-            <button onClick={deleteSave}>Delete Save</button>
-            <button onClick={showPopup}>Open Popup</button>
-            <!-- <TimerArea/> -->
-          </div>
-        </div>
-      </div>
-      <div class="App-menu">
-        <nav>
-          <div class="nav nav-tabs">
-            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
-            <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
-            <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
-          </div>
-        </nav>
-        <div class="tab-content">
-          <div class="tab-pane fade show active" id="nav-training">
-            <div class="tab-container row">
-              <trainingpanel></trainingpanel>>
-              <div class="col-4">&nbsp;</div>
+    <div class="row">
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <div class="text-center">
+              <mainbar :bartype=player.cultivation :level=player.level></mainbar>
+              <smallbar :bartype=player.body v-if='player.level > 1'></smallbar>
+              <smallbar :bartype=player.mind v-if='player.level > 5'></smallbar>
+              <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
             </div>
           </div>
-          <div class="tab-pane fade" id="nav-sects">
-            <div class="tab-container">
-            </div>
-          </div>
-          <div class="tab-pane fade" id="nav-elements">
-            <div class="tab-container">
+          <div class="col-2">
+            <div>
+              <button onClick={save}>Save</button>
+              <button onClick={deleteSave}>Delete Save</button>
+              <button onClick={showPopup}>Open Popup</button>
+              <!-- <TimerArea/> -->
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <div class="App-column">
-      <div class="App-skills">
-        <nav>
-          <div class="nav nav-tabs">
-            <a class="nav-item nav-link" data-toggle="tab" href="#nav-battle" v-if='player.level > 2'>Battle</a>
-            <a class="nav-item nav-link active" data-toggle="tab" href="#nav-techniques">Techniques</a>
-            <a class="nav-item nav-link" data-toggle="tab" href="#nav-alchemy" v-if='player.level > 15'>Alchemy</a>
-            <a class="nav-item nav-link" data-toggle="tab" href="#nav-passives" v-if='player.level > 5'>Passives</a>
-          </div>
-        </nav>
-        <div class="tab-content">
-          <div class="tab-pane skill-tab-container fade" id="nav-battle">
-          </div>
-          <div class="tab-pane skill-tab-container fade show active" id="nav-techniques">
-            <techniquespanel></techniquespanel>
-          </div>
-          <div class="tab-pane skill-tab-container fade" id="nav-alchemy">
-          </div>
-          <div class="tab-pane skill-tab-container fade" id="nav-passives">
+        <div class="row h-100">
+          <div class="col">
+            <nav>
+              <div class="nav nav-tabs">
+                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
+              </div>
+            </nav>
+            <div class="tab-content tab-border h-100">
+              <div class="tab-pane fade show active" id="nav-training">
+                <div class="row">
+                  <trainingpanel></trainingpanel>>
+                  <div class="col-4">&nbsp;</div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="nav-sects">
+              </div>
+              <div class="tab-pane fade" id="nav-elements">
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div class="App-map">
-        <div v-if='player.inEvent==true' class="encounter-panel">
-          <eventpanel></eventpanel>
+      <div class="col">
+        <div class="row">
+          <div class="col">
+            <nav>
+              <div class="nav nav-tabs">
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-battle" v-if='player.level > 2'>Battle</a>
+                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-techniques">Techniques</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-alchemy" v-if='player.level > 15'>Alchemy</a>
+                <a class="nav-item nav-link" data-toggle="tab" href="#nav-passives" v-if='player.level > 5'>Passives</a>
+              </div>
+            </nav>
+            <div class="tab-content tab-border">
+              <div class="tab-pane fade" id="nav-battle">
+              </div>
+              <div class="tab-pane fade show active" id="nav-techniques">
+                <techniquespanel></techniquespanel>
+              </div>
+              <div class="tab-pane fade" id="nav-alchemy">
+              </div>
+              <div class="tab-pane fade" id="nav-passives">
+              </div>
+            </div>
+          </div>
         </div>
-        <!-- <EventListing /> -->
+        <div class="row">
+          <div v-if='player.inEvent==true' class="col">
+            <eventpanel></eventpanel>
+          </div>
+          <!-- <EventListing /> -->
+        </div>
       </div>
     </div>
   </div>
@@ -121,7 +122,7 @@
   <script src="js/components/skillbar.js"></script>
   <script src="js/components/skillslots.js"></script>
   <script>
-    app.mount('#PathApp');
+    app.mount('#app');
   </script>
 </body>
 

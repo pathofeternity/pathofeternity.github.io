@@ -48,15 +48,15 @@ app.component('eventpanel', {
         },
     },
     template: `
-        <div className="event-panel">
+        <div className="panel-border">
             <div className="event-top">
                 <h2>{{player.currentEvent.name}}</h2>
-                <div class="btn-group event-buttonbar">
+                <div class="btn-group">
                     <button type="button" v-for="step in player.currentEvent.steps" v-bind:class="buttonStyle(step)">{{step.title}}</button>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4 btn-group-vertical event-usable-skills">
+                <div class="col-4 btn-group-vertical">
                     <button type="button" v-if=currentStep.hasDefaultAction @click='useSkill("generic")' class="btn btn-primary mb-2">{{currentStep.defaultAction}}</button>
                     <button type="button" v-for="skill in validActions" @click=useSkill(skill) class="btn btn-primary mb-2">{{skill.name}}</button>
                     <button type="button" @click=exitEvent() class="btn btn-primary">Cancel</button>
