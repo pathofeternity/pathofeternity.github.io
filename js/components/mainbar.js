@@ -23,14 +23,16 @@ app.component('mainbar', {
         },
     },
     template: `
-        <div class="panel-border">
-            <h2> Cultivation - {{ levelName }}</h2>
-            <div class="progress">
-                <div class="progress-bar" v-bind:style="{ width: barWidth }">
-                    <span>
-                        <button @click=startBreakthrough(this.level) class='btn btn-success' v-if=breakthrough>Breakthrough</button>
-                        <template v-else>{{ label }}</template>
-                    </span>
+        <div class="col-12">
+            <div class="panel-border">
+                <h2> Cultivation - {{ levelName }}</h2>
+                <div class="progress">
+                    <div class="progress-bar" v-bind:style="{ width: barWidth }">
+                        <span>
+                            <button @click=startBreakthrough(this.level) class='btn btn-success' v-if=breakthrough>Breakthrough</button>
+                            <template v-else>{{ label }}</template>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

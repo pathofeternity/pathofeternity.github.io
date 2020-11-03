@@ -11,13 +11,15 @@ app.component('smallbar', {
         },
     },
     template: `
-        <div>
-            <h3>{{bartype.name}}</h3>
-            <div class="progress">
-                <div class="progress-bar" v-bind:style="{ width: barWidth }">
-                    <span>
-                        {{ label }} 
-                    </span>
+        <div class="col-4">
+            <div class="panel-border">
+                <h3>{{bartype.name}}</h3>
+                <div class="progress">
+                    <div class="progress-bar" v-bind:style="{ width: barWidth }">
+                        <span>
+                            {{ label }} 
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>

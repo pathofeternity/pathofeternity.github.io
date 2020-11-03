@@ -48,8 +48,8 @@ app.component('eventpanel', {
         },
     },
     template: `
-        <div className="panel-border">
-            <div className="event-top">
+        <div class="panel-border flex-grow-1">
+            <div class="event-top">
                 <h2>{{player.currentEvent.name}}</h2>
                 <div class="btn-group">
                     <button type="button" v-for="step in player.currentEvent.steps" v-bind:class="buttonStyle(step)">{{step.title}}</button>

@@ -1,15 +1,26 @@
-
+#app {
+  min-height: 100vh;
+}
 .tab-border {
   border: solid;
   border-color: #cccccc;
-  margin-bottom: 5px;
   padding: 5px;
 }
 
 .panel-border {
   border: solid;
   border-color: #cccccc;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px;
   padding: 5px;
+}
+
+.tab-container {
+  margin: 5px;
+}
+
+.event-top {
+  text-align: center;
+  border-bottom: solid #cccccc;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
 }

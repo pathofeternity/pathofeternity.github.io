@@ -17,21 +17,21 @@
 </head>
 
 <body>
-  <div id="app" class="container-fluid">
+  <div id="app" class="container-fluid no-gutters d-flex">
     <!--<Popup />-->
-    <div class="row">
-      <div class="col">
-        <div class="row">
-          <div class="col">
-            <div class="text-center">
-              <mainbar :bartype=player.cultivation :level=player.level></mainbar>
-              <smallbar :bartype=player.body v-if='player.level > 1'></smallbar>
-              <smallbar :bartype=player.mind v-if='player.level > 5'></smallbar>
-              <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
-            </div>
+    <div class="col d-flex flex-column">
+      <div class="row no-gutters">
+        <div class="col">
+          <div class="row no-gutters text-center">
+            <mainbar :bartype=player.cultivation :level=player.level></mainbar>
+            <smallbar :bartype=player.body v-if='player.level > 1'></smallbar>
+            <smallbar :bartype=player.mind v-if='player.level > 5'></smallbar>
+            <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
           </div>
-          <div class="col-2">
-            <div>
+        </div>
+        <div class="col-2 d-flex">
+          <div class="row no-gutters flex-grow-1">
+            <div class="panel-border">
               <button onClick={save}>Save</button>
               <button onClick={deleteSave}>Delete Save</button>
               <button onClick={showPopup}>Open Popup</button>
@@ -39,60 +39,60 @@
             </div>
           </div>
         </div>
-        <div class="row h-100">
-          <div class="col">
-            <nav>
-              <div class="nav nav-tabs">
-                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
+      </div>
+      <div class="row no-gutters flex-grow-1">
+        <div class="d-flex flex-column flex-grow-1 tab-container">
+          <nav>
+            <div class="nav nav-tabs">
+              <a class="nav-item nav-link active" data-toggle="tab" href="#nav-training">Training</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#nav-sects" v-if='player.level > 2'>Sects</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#nav-elements" v-if='player.level > 10'>Elements</a>
+            </div>
+          </nav>
+          <div class="tab-content tab-border flex-grow-1">
+            <div class="tab-pane fade show active" id="nav-training">
+              <div class="row">
+                <trainingpanel></trainingpanel>>
+                <div class="col-4">&nbsp;</div>
               </div>
-            </nav>
-            <div class="tab-content tab-border h-100">
-              <div class="tab-pane fade show active" id="nav-training">
-                <div class="row">
-                  <trainingpanel></trainingpanel>>
-                  <div class="col-4">&nbsp;</div>
-                </div>
-              </div>
-              <div class="tab-pane fade" id="nav-sects">
-              </div>
-              <div class="tab-pane fade" id="nav-elements">
-              </div>
+            </div>
+            <div class="tab-pane fade" id="nav-sects">
+            </div>
+            <div class="tab-pane fade" id="nav-elements">
             </div>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="row">
-          <div class="col">
-            <nav>
-              <div class="nav nav-tabs">
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-battle" v-if='player.level > 2'>Battle</a>
-                <a class="nav-item nav-link active" data-toggle="tab" href="#nav-techniques">Techniques</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-alchemy" v-if='player.level > 15'>Alchemy</a>
-                <a class="nav-item nav-link" data-toggle="tab" href="#nav-passives" v-if='player.level > 5'>Passives</a>
-              </div>
-            </nav>
-            <div class="tab-content tab-border">
-              <div class="tab-pane fade" id="nav-battle">
-              </div>
-              <div class="tab-pane fade show active" id="nav-techniques">
-                <techniquespanel></techniquespanel>
-              </div>
-              <div class="tab-pane fade" id="nav-alchemy">
-              </div>
-              <div class="tab-pane fade" id="nav-passives">
-              </div>
+    </div>
+    <div class="col">
+      <div class="row h-50">
+        <div class="col tab-container d-flex flex-column">
+          <nav>
+            <div class="nav nav-tabs">
+              <a class="nav-item nav-link" data-toggle="tab" href="#nav-battle" v-if='player.level > 2'>Battle</a>
+              <a class="nav-item nav-link active" data-toggle="tab" href="#nav-techniques">Techniques</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#nav-alchemy" v-if='player.level > 15'>Alchemy</a>
+              <a class="nav-item nav-link" data-toggle="tab" href="#nav-passives" v-if='player.level > 5'>Passives</a>
+            </div>
+          </nav>
+          <div class="tab-content tab-border flex-grow-1">
+            <div class="tab-pane fade" id="nav-battle">
+            </div>
+            <div class="tab-pane fade show active" id="nav-techniques">
+              <techniquespanel></techniquespanel>
+            </div>
+            <div class="tab-pane fade" id="nav-alchemy">
+            </div>
+            <div class="tab-pane fade" id="nav-passives">
             </div>
           </div>
         </div>
-        <div class="row">
-          <div v-if='player.inEvent==true' class="col">
-            <eventpanel></eventpanel>
-          </div>
-          <!-- <EventListing /> -->
+      </div>
+      <div class="row h-50">
+        <div v-if='player.inEvent==true' class="col d-flex flex-column">
+          <eventpanel></eventpanel>
         </div>
+        <!-- <EventListing /> -->
       </div>
     </div>
   </div>
