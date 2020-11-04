@@ -50,8 +50,8 @@
               <smallbar :bartype=player.soul v-if='player.level > 25'></smallbar>
             </div>
           </div>
-          <div v-if='player.level > 0' class="col-2 d-flex">
-            <div class="row gx-0 flex-grow-1">
+          <div class="col-2 d-flex">
+            <div v-if='player.level > 0' class="row gx-0 flex-grow-1">
               <div class="panel-border">
                 <button onClick=saveGame()>Save</button>
                 <button onClick=deleteGame()>Delete Save</button>
@@ -86,7 +86,7 @@
         </div>
       </div>
       <div class="col d-flex flex-column">
-        <div class="row flex-grow-1">
+        <div class="row h-50">
           <div v-if='player.level > 0' class="col d-flex flex-column">
             <nav>
               <div class="nav nav-tabs">
@@ -109,7 +109,7 @@
             </div>
           </div>
         </div>
-        <div class="row mt-2 flex-grow-1">
+        <div class="row mt-2 h-50">
           <div v-if='player.inEvent==true' class="col d-flex flex-column">
             <eventpanel></eventpanel>
           </div>
