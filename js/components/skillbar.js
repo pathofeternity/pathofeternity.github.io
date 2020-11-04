@@ -32,7 +32,7 @@ app.component('skillbar', {
         <i class="col-1 fas " v-bind:class="iconName" style="font-size:1.5rem"></i>
         <div class="col">
             <div class="row">{{skill.name}} - {{levelName}}</div>
-            <div class="row progress">
+            <div class="row progress position-relative">
                 <div class="progress-bar" v-bind:style="{ width: barWidth }">
                     <span>
                     {{ label }} 

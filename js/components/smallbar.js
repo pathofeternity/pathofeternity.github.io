@@ -11,7 +11,7 @@ app.component('smallbar', {
         },
     },
     template: `
-        <div class="col-4">
+        <div class="col-4 mt-2">
             <div class="panel-border">
                 <h3>{{bartype.name}}</h3>
                 <div class="progress stat-progress">

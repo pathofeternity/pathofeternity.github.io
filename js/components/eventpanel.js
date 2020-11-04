@@ -63,7 +63,7 @@ app.component('eventpanel', {
                 </div>
                 <div class="col mr-3">
                     <h3 class="text-center">{{currentStep.description}}</h3>
-                    <div class="progress statProgress">
+                    <div class="progress stat-progress">
                         <div class="progress-bar" v-bind:style="{ width: barWidth }">
                             <span>
                                 {{ label }} 

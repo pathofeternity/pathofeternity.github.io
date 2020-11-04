@@ -29,6 +29,7 @@ class breakthroughE1 extends baseevent {
                 finishAction: function () {
                     breakthrough(5);
                     endEvent();
+                    showModal("A strange feeling...", "As you gather more and more of the strange specks, a warm feeling builds up inside your body.  Suddenly, you feel something break free inside your body and a strange feeling flows through your body.  This feeling energizes you like nothing has before and you decide to gather as many specks as you can before the feeling fades.");
                 },
                 }
         ]
